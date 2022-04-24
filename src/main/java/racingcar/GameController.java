@@ -18,8 +18,8 @@ public class GameController {
     public void run() {
         Cars cars = new Cars(createCarList(getCarNames()));
 
-        int driveNumber = readDriveNumber();
-        for (int i = 0; i < driveNumber; i++) {
+        DriveNumber driveNumber = getDriveNumber();
+        for (int i = 0; i < driveNumber.getValue(); i++) {
             cars.driveAll(createRandomNumbers(cars.getList().size()));
             printCars(cars);
         }
@@ -43,6 +43,19 @@ public class GameController {
     private String[] readNames() {
         userInterface.printCarNamesPrompt();
         return readLine().split(NAME_SEPARATOR);
+    }
+
+    private DriveNumber getDriveNumber() {
+        DriveNumber driveNumber;
+        while (true) {
+            try {
+                driveNumber = new DriveNumber(readDriveNumber());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+            return driveNumber;
+        }
     }
 
     private int readDriveNumber() {

@@ -4,7 +4,7 @@ public class Distance {
     private int value;
 
     public Distance(int distance) {
-        validateDistanceRange(distance);
+        validateRange(distance);
         this.value = distance;
     }
 
@@ -12,7 +12,7 @@ public class Distance {
         return value;
     }
 
-    public void validateDistanceRange(int distance) {
+    private void validateRange(int distance) {
         if (distance < 0) {
             throw new IllegalArgumentException("[ERROR] 이동 거리는 음수가 될 수 없습니다.");
         }
