@@ -2,15 +2,16 @@ package racingcar;
 
 public class Car {
 
-    private CarName name;
-    private int distance = 0;
+    private final CarName name;
+    private final Distance distance;
 
-    public int getDistance() {
-        return distance;
+    public Car(CarName name, Distance distance) {
+        this.name = name;
+        this.distance = distance;
     }
 
-    public Car(CarName name) {
-        this.name = name;
+    public int getDistance() {
+        return distance.getValue();
     }
 
     public String getName() {
@@ -19,7 +20,7 @@ public class Car {
 
     public void drive(int value) {
         if (value >= Constants.THRESHOLD) {
-            distance++;
+            distance.increment();
         }
     }
 }

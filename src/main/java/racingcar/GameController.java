@@ -1,10 +1,11 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static racingcar.Constants.*;
 
 public class GameController {
 
@@ -43,18 +44,18 @@ public class GameController {
 
     private String[] readNames() {
         userInterface.printCarNamesPrompt();
-        return Console.readLine().split(Constants.NAME_SEPARATOR);
+        return readLine().split(NAME_SEPARATOR);
     }
 
     private int readDriveNumber() {
         userInterface.printDriveNumberPrompt();
-        return Integer.valueOf(Console.readLine());
+        return Integer.valueOf(readLine());
     }
 
     public List<Car> createCarList(CarNames carNames) {
         ArrayList<Car> cars = new ArrayList<>();
         for (CarName carName : carNames.getList()) {
-            cars.add(new Car(carName));
+            cars.add(new Car(carName, new Distance(INITIAL_DISTANCE)));
         }
 
         return cars;
@@ -63,7 +64,7 @@ public class GameController {
     public List<Integer> createRandomNumbers(int carListSize) {
         List<Integer> randomNumbers = new ArrayList<>();
         for (int j = 0; j < carListSize; j++) {
-            randomNumbers.add(Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX));
+            randomNumbers.add(pickNumberInRange(RANDOM_MIN, RANDOM_MAX));
         }
 
         return randomNumbers;
