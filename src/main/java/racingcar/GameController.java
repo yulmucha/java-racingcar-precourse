@@ -8,10 +8,11 @@ import java.util.List;
 public class GameController {
 
     public void run() {
-        String[] names = getNames();
+        List<CarName> names = getNames();
 
-        ArrayList<Car> cars = new ArrayList<>(names.length);
-        for (String name : names) {
+        ArrayList<Car> cars = new ArrayList<>();
+
+        for (CarName name : names) {
             cars.add(new Car(name));
         }
 
@@ -26,12 +27,13 @@ public class GameController {
         printWinners(cars);
     }
 
-    private String[] getNames() {
-        String[] names;
+    private List<CarName> getNames() {
+        List<CarName> names = new ArrayList<>();
         while (true) {
             try {
-                names = readNames();
-                validateLength(names);
+                for (String name : readNames()) {
+                    names.add(new CarName(name));
+                }
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -65,12 +67,12 @@ public class GameController {
             if (max < car.getDistance()) {
                 max = car.getDistance();
                 winners.clear();
-                winners.add(car.getName());
+                winners.add(car.getName().getValue());
                 continue;
             }
 
             if (max == car.getDistance()) {
-                winners.add(car.getName());
+                winners.add(car.getName().getValue());
             }
         }
 

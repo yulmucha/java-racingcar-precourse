@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
-    private String name;
+    private CarName name;
     private int distance = 0;
 
     public int getDistance() {
         return distance;
     }
 
-    public Car(String name) {
+    public Car(CarName name) {
         this.name = name;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
@@ -30,7 +30,7 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(name + " : ");
+        builder.append(name.getValue() + " : ");
         for (int i = 0; i < distance; i++) {
             builder.append("-");
         }
