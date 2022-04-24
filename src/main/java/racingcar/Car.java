@@ -18,7 +18,7 @@ public class Car {
     }
 
     public void drive(int value) {
-        if (value >= 4) {
+        if (value >= Constants.THRESHOLD) {
             distance++;
         }
     }

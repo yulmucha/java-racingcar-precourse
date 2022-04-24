@@ -43,7 +43,7 @@ public class GameController {
 
     private String[] readNames() {
         userInterface.printCarNamesPrompt();
-        return Console.readLine().split(",");
+        return Console.readLine().split(Constants.NAME_SEPARATOR);
     }
 
     private int readDriveNumber() {
@@ -63,7 +63,7 @@ public class GameController {
     public List<Integer> createRandomNumbers(int carListSize) {
         List<Integer> randomNumbers = new ArrayList<>();
         for (int j = 0; j < carListSize; j++) {
-            randomNumbers.add(Randoms.pickNumberInRange(0, 9));
+            randomNumbers.add(Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX));
         }
 
         return randomNumbers;
