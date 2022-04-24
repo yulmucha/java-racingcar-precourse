@@ -25,7 +25,7 @@ public class GameController {
             }
         }
 
-        printWinners(cars);
+        userInterface.printWinners(cars.getWinners());
     }
 
     private CarNames getCarNames() {
@@ -67,24 +67,5 @@ public class GameController {
         }
 
         return randomNumbers;
-    }
-
-    public void printWinners(Cars cars) {
-        int max = 0;
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars.getList()) {
-            if (max < car.getDistance()) {
-                max = car.getDistance();
-                winners.clear();
-                winners.add(car.getName().getValue());
-                continue;
-            }
-
-            if (max == car.getDistance()) {
-                winners.add(car.getName().getValue());
-            }
-        }
-
-        userInterface.printWinners(winners);
     }
 }
