@@ -9,19 +9,11 @@ import java.util.List;
 public class GameController {
 
     public void run() {
-        ArrayList<Car> carList = new ArrayList<>();
-        for (CarName carName : getCarNames().getList()) {
-            carList.add(new Car(carName));
-        }
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(createCarList(getCarNames()));
 
         int driveNumber = readDriveNumber();
         for (int i = 0; i < driveNumber; i++) {
-            List<Integer> randomNumbers = new ArrayList<>();
-            for (int j = 0; j < cars.getList().size(); j++) {
-                randomNumbers.add(Randoms.pickNumberInRange(0, 9));
-            }
-            cars.driveAll(randomNumbers);
+            cars.driveAll(createRandomNumbers(cars.getList().size()));
         }
 
         printWinners(cars);
@@ -48,6 +40,24 @@ public class GameController {
     private int readDriveNumber() {
         System.out.println("시도할 횟수");
         return Integer.valueOf(Console.readLine());
+    }
+
+    public List<Car> createCarList(CarNames carNames) {
+        ArrayList<Car> cars = new ArrayList<>();
+        for (CarName carName : carNames.getList()) {
+            cars.add(new Car(carName));
+        }
+
+        return cars;
+    }
+
+    public List<Integer> createRandomNumbers(int carListSize) {
+        List<Integer> randomNumbers = new ArrayList<>();
+        for (int j = 0; j < carListSize; j++) {
+            randomNumbers.add(Randoms.pickNumberInRange(0, 9));
+        }
+
+        return randomNumbers;
     }
 
     public void printWinners(Cars cars) {
