@@ -10,17 +10,11 @@ public class GameController {
     public void run() {
         CarNames carNames = getCarNames();
 
-        ArrayList<Car> cars = new ArrayList<>();
-        for (CarName name : carNames.getNames()) {
-            cars.add(new Car(name));
-        }
+        Cars cars = new Cars(carNames);
 
         int driveNumber = readDriveNumber();
-
         for (int i = 0; i < driveNumber; i++) {
-            for (Car car : cars) {
-                car.drive();
-            }
+            cars.driveAll();
         }
 
         printWinners(cars);
@@ -57,10 +51,10 @@ public class GameController {
         }
     }
 
-    public void printWinners(List<Car> cars) {
+    public void printWinners(Cars cars) {
         int max = 0;
         List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : cars.getList()) {
             if (max < car.getDistance()) {
                 max = car.getDistance();
                 winners.clear();
