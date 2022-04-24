@@ -25,7 +25,7 @@ public class CarsTest {
     }
 
     @Test
-    void 최종_우승자() {
+    void 최종_우승자_1() {
         List<Car> carList = Arrays.asList(
                 new Car(new CarName("yul")),
                 new Car(new CarName("dd")),
@@ -35,5 +35,18 @@ public class CarsTest {
         cars.driveAll(Arrays.asList(2,4,3));
 
         assertThat(cars.getWinners()).containsExactly("dd");
+    }
+
+    @Test
+    void 최종_우승자_2() {
+        List<Car> carList = Arrays.asList(
+                new Car(new CarName("yul")),
+                new Car(new CarName("dd")),
+                new Car(new CarName("iu")));
+        Cars cars = new Cars(carList);
+
+        cars.driveAll(Arrays.asList(4,1,9));
+
+        assertThat(cars.getWinners()).containsExactly("yul", "iu");
     }
 }
