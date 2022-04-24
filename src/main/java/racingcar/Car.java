@@ -21,16 +21,5 @@ public class Car {
         if (value >= 4) {
             distance++;
         }
-        System.out.println(this);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(name.getValue() + " : ");
-        for (int i = 0; i < distance; i++) {
-            builder.append("-");
-        }
-        return builder.toString();
     }
 }

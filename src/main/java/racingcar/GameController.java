@@ -8,12 +8,21 @@ import java.util.List;
 
 public class GameController {
 
+    private final UserInterface userInterface;
+
+    public GameController(UserInterface userInterface) {
+        this.userInterface = userInterface;
+    }
+
     public void run() {
         Cars cars = new Cars(createCarList(getCarNames()));
 
         int driveNumber = readDriveNumber();
         for (int i = 0; i < driveNumber; i++) {
             cars.driveAll(createRandomNumbers(cars.getList().size()));
+            for (Car car : cars.getList()) {
+                userInterface.printCar(car.getName().getValue(), car.getDistance());
+            }
         }
 
         printWinners(cars);
@@ -33,12 +42,12 @@ public class GameController {
     }
 
     private String[] readNames() {
-        System.out.println("경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)");
+        userInterface.printCarNamesPrompt();
         return Console.readLine().split(",");
     }
 
     private int readDriveNumber() {
-        System.out.println("시도할 횟수");
+        userInterface.printDriveNumberPrompt();
         return Integer.valueOf(Console.readLine());
     }
 
@@ -76,7 +85,6 @@ public class GameController {
             }
         }
 
-        System.out.print("최종 우승자: ");
-        System.out.println(String.join(", ", winners));
+        userInterface.printWinners(winners);
     }
 }
