@@ -1,28 +1,21 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private final List<Car> list;
 
-    public Cars(CarNames names) {
-        ArrayList<Car> cars = new ArrayList<>();
-        for (CarName name : names.getList()) {
-            cars.add(new Car(name));
-        }
-        this.list = cars;
+    public Cars(List<Car> carList) {
+        this.list = carList;
     }
 
     public List<Car> getList() {
         return list;
     }
 
-    public void driveAll() {
-        for (Car car : list) {
-            car.drive(Randoms.pickNumberInRange(0, 9));
+    public void driveAll(List<Integer> randomNumbers) {
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).drive(randomNumbers.get(i));
         }
     }
 }

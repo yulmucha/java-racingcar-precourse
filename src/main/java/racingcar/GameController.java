@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +9,19 @@ import java.util.List;
 public class GameController {
 
     public void run() {
-        CarNames carNames = getCarNames();
-
-        Cars cars = new Cars(carNames);
+        ArrayList<Car> carList = new ArrayList<>();
+        for (CarName carName : getCarNames().getList()) {
+            carList.add(new Car(carName));
+        }
+        Cars cars = new Cars(carList);
 
         int driveNumber = readDriveNumber();
         for (int i = 0; i < driveNumber; i++) {
-            cars.driveAll();
+            List<Integer> randomNumbers = new ArrayList<>();
+            for (int j = 0; j < cars.getList().size(); j++) {
+                randomNumbers.add(Randoms.pickNumberInRange(0, 9));
+            }
+            cars.driveAll(randomNumbers);
         }
 
         printWinners(cars);
@@ -41,14 +48,6 @@ public class GameController {
     private int readDriveNumber() {
         System.out.println("시도할 횟수");
         return Integer.valueOf(Console.readLine());
-    }
-
-    private void validateLength(String[] names) {
-        for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("[ERROR] 이름은 5자 이하만 가능합니다.");
-            }
-        }
     }
 
     public void printWinners(Cars cars) {
