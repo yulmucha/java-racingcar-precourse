@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Car {
 
     private CarName name;
@@ -19,9 +17,8 @@ public class Car {
         return name;
     }
 
-    public void drive() {
-        int random = Randoms.pickNumberInRange(0, 9);
-        if (random >= 4) {
+    public void drive(int value) {
+        if (value >= 4) {
             distance++;
         }
         System.out.println(this);
