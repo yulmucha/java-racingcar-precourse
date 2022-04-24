@@ -23,4 +23,17 @@ public class CarsTest {
         assertThat(cars.getList().get(1).getDistance()).isEqualTo(1);
         assertThat(cars.getList().get(2).getDistance()).isEqualTo(0);
     }
+
+    @Test
+    void 최종_우승자() {
+        List<Car> carList = Arrays.asList(
+                new Car(new CarName("yul")),
+                new Car(new CarName("dd")),
+                new Car(new CarName("iu")));
+        Cars cars = new Cars(carList);
+
+        cars.driveAll(Arrays.asList(2,4,3));
+
+        assertThat(cars.getWinners()).containsExactly("dd");
+    }
 }
