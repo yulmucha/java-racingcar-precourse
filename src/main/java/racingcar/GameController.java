@@ -8,11 +8,10 @@ import java.util.List;
 public class GameController {
 
     public void run() {
-        List<CarName> names = getNames();
+        CarNames carNames = getCarNames();
 
         ArrayList<Car> cars = new ArrayList<>();
-
-        for (CarName name : names) {
+        for (CarName name : carNames.getNames()) {
             cars.add(new Car(name));
         }
 
@@ -27,13 +26,11 @@ public class GameController {
         printWinners(cars);
     }
 
-    private List<CarName> getNames() {
-        List<CarName> names = new ArrayList<>();
+    private CarNames getCarNames() {
+        CarNames names;
         while (true) {
             try {
-                for (String name : readNames()) {
-                    names.add(new CarName(name));
-                }
+                names = new CarNames(readNames());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
