@@ -13,8 +13,8 @@ public class Car {
         this.name = name;
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getValue();
     }
 
     public void drive(int value) {

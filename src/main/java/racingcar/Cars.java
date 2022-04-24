@@ -34,12 +34,12 @@ public class Cars {
         if (maxDistance < car.getDistance()) {
             maxDistance = car.getDistance();
             winners.clear();
-            winners.add(car.getName().getValue());
+            winners.add(car.getName());
             return maxDistance;
         }
 
         if (maxDistance == car.getDistance()) {
-            winners.add(car.getName().getValue());
+            winners.add(car.getName());
         }
 
         return maxDistance;

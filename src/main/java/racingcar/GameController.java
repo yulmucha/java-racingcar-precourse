@@ -21,7 +21,7 @@ public class GameController {
         for (int i = 0; i < driveNumber; i++) {
             cars.driveAll(createRandomNumbers(cars.getList().size()));
             for (Car car : cars.getList()) {
-                userInterface.printCar(car.getName().getValue(), car.getDistance());
+                userInterface.printCar(car.getName(), car.getDistance());
             }
         }
 
