@@ -18,12 +18,18 @@ public class GameController {
     public void run() {
         Cars cars = new Cars(getCarNames());
         DriveNumber driveNumber = getDriveNumber();
+
         for (int i = 0; i < driveNumber.getValue(); i++) {
-            cars.driveAll(createRandomNumbers(cars.getSize()));
-            printCars(cars);
+            driveAll(cars);
         }
 
         userInterface.printWinners(cars.getWinners());
+    }
+
+    private void driveAll(Cars cars) {
+        cars.driveAll(createRandomNumbers(cars.getSize()));
+        printCars(cars);
+        System.out.println();
     }
 
     private CarNames getCarNames() {
