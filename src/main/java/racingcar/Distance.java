@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Constants.DISTANCE_NEGATIVE_EXCEPTION_MESSAGE;
+
 public class Distance {
     private int value;
 
@@ -14,7 +16,7 @@ public class Distance {
 
     private void validateRange(int distance) {
         if (distance < 0) {
-            throw new IllegalArgumentException("[ERROR] 이동 거리는 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(DISTANCE_NEGATIVE_EXCEPTION_MESSAGE);
         }
     }
 

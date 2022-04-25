@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Constants.DRIVE_NUMBER_NEGATIVE_EXCEPTION_MESSAGE;
+
 public class DriveNumber {
     private final int value;
 
@@ -14,7 +16,7 @@ public class DriveNumber {
 
     private void validateRange(int value) {
         if (value < 0) {
-            throw new IllegalArgumentException("[ERROR] 시도 횟수는 음수일 수 없습니다.");
+            throw new IllegalArgumentException(DRIVE_NUMBER_NEGATIVE_EXCEPTION_MESSAGE);
         }
     }
 }

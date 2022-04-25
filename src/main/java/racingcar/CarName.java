@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Constants.NAME_LENGTH_EXCESS_EXCEPTION_MESSAGE;
+
 public class CarName {
     private final String value;
 
@@ -14,7 +16,7 @@ public class CarName {
 
     private void validateNameLength(String name) {
         if (name.length() > Constants.NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(NAME_LENGTH_EXCESS_EXCEPTION_MESSAGE);
         }
     }
 }
