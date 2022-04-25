@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.Constants.NAME_LENGTH_EXCESS_EXCEPTION_MESSAGE;
 
 public class CarNameTest {
 
@@ -18,6 +19,6 @@ public class CarNameTest {
         assertThatThrownBy(() -> {
             CarName carName = new CarName("yul123");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+                .hasMessageContaining(NAME_LENGTH_EXCESS_EXCEPTION_MESSAGE);
     }
 }

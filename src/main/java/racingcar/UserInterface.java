@@ -25,4 +25,8 @@ public class UserInterface {
         System.out.print("최종 우승자: ");
         System.out.println(String.join(", ", winners));
     }
+
+    public void printExceptionMessage(String message) {
+        System.out.println("[ERROR] " + message);
+    }
 }

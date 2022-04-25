@@ -32,7 +32,7 @@ public class GameController {
             try {
                 names = new CarNames(readNames());
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                userInterface.printExceptionMessage(e.getMessage());
                 continue;
             }
             return names;
@@ -50,7 +50,7 @@ public class GameController {
             try {
                 driveNumber = new DriveNumber(readDriveNumber());
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                userInterface.printExceptionMessage(e.getMessage());
                 continue;
             }
             return driveNumber;
