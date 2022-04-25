@@ -16,11 +16,10 @@ public class GameController {
     }
 
     public void run() {
-        Cars cars = new Cars(createCarList(getCarNames()));
-
+        Cars cars = new Cars(getCarNames());
         DriveNumber driveNumber = getDriveNumber();
         for (int i = 0; i < driveNumber.getValue(); i++) {
-            cars.driveAll(createRandomNumbers(cars.getList().size()));
+            cars.driveAll(createRandomNumbers(cars.getSize()));
             printCars(cars);
         }
 
@@ -61,15 +60,6 @@ public class GameController {
     private String readDriveNumber() {
         userInterface.printDriveNumberPrompt();
         return readLine();
-    }
-
-    public List<Car> createCarList(CarNames carNames) {
-        ArrayList<Car> cars = new ArrayList<>();
-        for (CarName carName : carNames.getList()) {
-            cars.add(new Car(carName, new Distance(INITIAL_DISTANCE)));
-        }
-
-        return cars;
     }
 
     public List<Integer> createRandomNumbers(int carListSize) {

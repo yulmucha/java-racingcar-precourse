@@ -6,12 +6,24 @@ import java.util.List;
 public class Cars {
     private final List<Car> list;
 
-    public Cars(List<Car> carList) {
-        this.list = carList;
+    public Cars(CarNames carNames) {
+        this.list = mapCar(carNames);
+    }
+
+    public static List<Car> mapCar(CarNames carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (CarName carName : carNames.getList()) {
+            cars.add(new Car(carName, new Distance(Constants.INITIAL_DISTANCE)));
+        }
+        return cars;
     }
 
     public List<Car> getList() {
         return list;
+    }
+
+    public int getSize() {
+        return list.size();
     }
 
     public void driveAll(List<Integer> randomNumbers) {
