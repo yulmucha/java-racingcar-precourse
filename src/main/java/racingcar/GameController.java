@@ -27,15 +27,19 @@ public class GameController {
     }
 
     private CarNames getCarNames() {
-        CarNames names;
-        while (true) {
-            try {
-                names = new CarNames(readNames());
-            } catch (IllegalArgumentException e) {
-                userInterface.printExceptionMessage(e.getMessage());
-                continue;
-            }
-            return names;
+        CarNames names = createCarNames();
+        while (names == null) {
+            names = createCarNames();
+        }
+        return names;
+    }
+
+    private CarNames createCarNames() {
+        try {
+            return new CarNames(readNames());
+        } catch (IllegalArgumentException e) {
+            userInterface.printExceptionMessage(e.getMessage());
+            return null;
         }
     }
 
@@ -45,15 +49,19 @@ public class GameController {
     }
 
     private DriveNumber getDriveNumber() {
-        DriveNumber driveNumber;
-        while (true) {
-            try {
-                driveNumber = new DriveNumber(readDriveNumber());
-            } catch (IllegalArgumentException e) {
-                userInterface.printExceptionMessage(e.getMessage());
-                continue;
-            }
-            return driveNumber;
+        DriveNumber driveNumber = createDriveNumber();
+        while (driveNumber == null) {
+            driveNumber = createDriveNumber();
+        }
+        return driveNumber;
+    }
+
+    private DriveNumber createDriveNumber() {
+        try {
+            return new DriveNumber(readDriveNumber());
+        } catch (IllegalArgumentException e) {
+            userInterface.printExceptionMessage(e.getMessage());
+            return null;
         }
     }
 
