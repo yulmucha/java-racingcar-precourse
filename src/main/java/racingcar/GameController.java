@@ -58,9 +58,9 @@ public class GameController {
         }
     }
 
-    private int readDriveNumber() {
+    private String readDriveNumber() {
         userInterface.printDriveNumberPrompt();
-        return Integer.valueOf(readLine());
+        return readLine();
     }
 
     public List<Car> createCarList(CarNames carNames) {
